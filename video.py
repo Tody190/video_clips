@@ -55,6 +55,8 @@ class Cutting():
         #print(cmd)
         p = subprocess.Popen(cmd,  stdout=subprocess.PIPE, stderr=subprocess.PIPE)
         out, err = p.communicate()
+        #print(out)
+        #print(err)
 
     def cutting_with_frame(self, start_frame, end_frame, temp_path):
         # 定位剪切的开始/结束时间

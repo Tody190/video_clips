@@ -58,6 +58,9 @@ def main(edl_file, video_file, out_path):
         if clip_name:
             # 去后缀
             clip_name = os.path.splitext(clip_name)[0]
+            # 名字添加timecode前缀
+            name_timecode = str(video_info.timecode_in).replace(":", ".")
+            clip_name = "(%s)%s"%(name_timecode, clip_name)
             if not hander_frame:
                 hander_frame = int(video_info.timecode_in.frames)
             clip_start_frame = video_info.timecode_in.frames - hander_frame + 1
@@ -74,10 +77,6 @@ def main(edl_file, video_file, out_path):
 
 
 if __name__ == "__main__":
-    # edl_file = r"M:\temp\video\changde.edl"
-    # filename = r"M:\temp\video\changde.mov"
-    # out_path = r"M:\temp\video\output_mov"
-    # main(edl_file, filename, out_path)
     import tkinter as tk
 
     uiconfig = config.read()['UI']
